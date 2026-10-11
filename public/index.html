@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open365 office</title>
+<meta name="description" content="Open365 — a self-hosted open-source office suite. Docs, Sheets, Slides, Access, Visio and Draw.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%232563eb'/><text x='16' y='22' font-size='16' font-family='sans-serif' font-weight='600' fill='white' text-anchor='middle'>O</text></svg>">
+<link rel="stylesheet" href="app.css">
+<style>
+  html, body { height: 100%; margin: 0; }
+  #boot { height: 100%; display: flex; align-items: center; justify-content: center; font-family: "Segoe UI", system-ui, sans-serif; background: #f6f7f9; color: #111827; }
+</style>
+</head>
+<body>
+  <div id="app" aria-live="polite">
+    <div id="boot">
+      <div style="text-align:center">
+        <div style="width:40px;height:40px;border-radius:8px;background:#2563eb;color:#fff;display:inline-grid;place-items:center;font-weight:700;margin-bottom:12px">O</div>
+        <div style="font-weight:650;font-size:16px">Open365</div>
+        <div id="bootmsg" style="color:#6b7280;font-size:13px;margin-top:6px">Opening Docs, Sheets, Slides, Access, Visio and Draw…</div>
+      </div>
+    </div>
+  </div>
+  <div id="toasts"></div>
+  <noscript>Open365 needs JavaScript enabled.</noscript>
+  <script>
+    setTimeout(function () {
+      var app = document.getElementById('app');
+      if (app && !app.querySelector('.desktop')) {
+        var msg = document.getElementById('bootmsg');
+        if (msg) msg.textContent = 'Still opening. Reload this preview if the suite does not appear.';
+      }
+    }, 6000);
+    window.addEventListener('error', function (e) {
+      var msg = document.getElementById('bootmsg');
+      if (msg && !document.querySelector('.desktop')) msg.textContent = e.message || 'Could not load the suite.';
+    });
+  </script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

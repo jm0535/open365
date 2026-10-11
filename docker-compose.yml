@@ -1,0 +1,26 @@
+# Local / self-host: docker compose up --build -d
+# Persistent store is the named volume, mounted at DATA_DIR=/data.
+services:
+  open365:
+    image: ${OPEN365_IMAGE:-open365:local}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${OPEN365_PORT:-4173}:4173"
+    environment:
+      HOST: 0.0.0.0
+      PORT: "4173"
+      DATA_DIR: /data
+    volumes:
+      - open365-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4173/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  open365-data:

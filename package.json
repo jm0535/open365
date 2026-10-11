@@ -1,0 +1,43 @@
+{
+  "name": "open365",
+  "version": "2.0.0",
+  "description": "A self-hosted, open-source enterprise suite: docs, sheets, slides, mail, calendar, drive, chat, tasks, approvals, meetings, and an admin center. Zero dependencies, no build step.",
+  "license": "AGPL-3.0-or-later",
+  "type": "commonjs",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "bash test/run.sh",
+    "ci": "bash scripts/ci.sh",
+    "test:formula": "node test/formula.test.mjs",
+    "test:ooxml": "node test/ooxml.test.mjs",
+    "test:app": "node test/app.test.mjs",
+    "test:offline": "node test/offline.test.mjs",
+    "test:enterprise": "node test/enterprise.test.mjs"
+  },
+  "keywords": [
+    "office",
+    "docs",
+    "sheets",
+    "slides",
+    "docx",
+    "xlsx",
+    "ooxml",
+    "self-hosted",
+    "open-source",
+    "microsoft-365-alternative"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "private": false
+}

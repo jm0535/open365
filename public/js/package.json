@@ -1,0 +1,4 @@
+{
+  "//": "Marks the browser sources as ES modules so Node can import them directly (server.js seeds the demo workspace from seed.js) regardless of the root package type.",
+  "type": "module"
+}
